@@ -9,9 +9,7 @@
     <name>gulimail</name>
     <description>聚合服务</description>
 
-    <packaging>
-        pom
-    </packaging>
+    <packaging>pom</packaging>
 
     <modules>
         <module>gulimail-coupon</module>
@@ -19,6 +17,9 @@
         <module>gulimail-order</module>
         <module>gulimail-product</module>
         <module>gulimail-ware</module>
+        <module>renren-fast</module>
+        <module>renren-generator</module>
+        <module>gulimail-common</module>
     </modules>
 
 </project>
