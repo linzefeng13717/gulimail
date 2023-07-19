@@ -5,6 +5,15 @@ spring:
     url: jdbc:mysql://192.168.15.129:3306/gulimail_ums?characterEncoding=UTF-8
     driver-class-name: com.mysql.cj.jdbc.Driver
 
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.138.1:8848
+
+  application:
+    name: gulimail-member
+
+
 mybatis-plus:
   mapper-locations: classpath:/mapper/**/*.
   global-config:
