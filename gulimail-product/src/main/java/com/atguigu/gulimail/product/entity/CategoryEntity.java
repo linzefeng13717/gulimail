@@ -1,10 +1,13 @@
 package com.atguigu.gulimail.product.entity;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
+
 import lombok.Data;
 
 /**
@@ -14,7 +17,7 @@ import lombok.Data;
  * @email sunlightcs@gmail.com
  * @date 2023-07-10 22:36:11
  */
-@Data
+@Data //Data注解会帮我们自动生成getter和setter
 @TableName("pms_category")
 public class CategoryEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -56,5 +59,13 @@ public class CategoryEntity implements Serializable {
 	 * 商品数量
 	 */
 	private Integer productCount;
+
+	/*在开发中可能会遇到MyBatis-Plus使用实体类属性进行SQL操作，
+	但是不用存到数据库中去查找，这时候我们的实体中有这个属性，
+	但是数据库的表中没有这个字段(即：实体类属性非数据库表字段)，
+	如果不做处理就会报错。*/
+	//可以使用TableField(exist=false)来表示数据表中不存在该属性
+	@TableField(exist = false)
+	private List<CategoryEntity> children;
 
 }

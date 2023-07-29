@@ -19,6 +19,7 @@
         <module>gulimail-ware</module>
         <module>renren-fast</module>
         <module>renren-generator</module>
+        <module>gulimail-gateway</module>
         <module>gulimail-common</module>
     </modules>
 
