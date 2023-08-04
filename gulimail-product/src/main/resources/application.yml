@@ -19,3 +19,10 @@ mybatis-plus:
 
 server:
   port: 10000
+
+alibaba:
+  cloud:
+    access-key: LTAI5t8WuNmMMwu82zNyfz8o
+    secret-key: KCrfTsuCtrmimImGZrAp5zhWjvQZdc
+    oss:
+      endpoint: oss-cn-beijing.aliyuncs.com
