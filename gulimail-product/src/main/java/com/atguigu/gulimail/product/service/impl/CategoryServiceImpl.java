@@ -1,5 +1,6 @@
 package com.atguigu.gulimail.product.service.impl;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -48,6 +49,14 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryDao, CategoryEntity
 
         //2、组装成父子分类
         return level1Menus;
+    }
+
+    @Override
+    public void removeMenuById(List<Long> list) {
+        //TODO 1、检查当前删除的菜单，是否被别的地方引用
+
+        //逻辑删除
+        baseMapper.deleteBatchIds(list);
     }
 
     /**

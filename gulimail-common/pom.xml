@@ -81,6 +81,12 @@
             <version>2.1.0.RELEASE</version>
         </dependency>
 
+<!--        <dependency>-->
+<!--            <groupId>com.alibaba.cloud</groupId>-->
+<!--            <artifactId>aliyun-oss-spring-boot-starter</artifactId>-->
+<!--            <version>1.0.0</version>-->
+<!--        </dependency>-->
+
         <!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
         <!-- https://mvnrepository.com/artifact/com.google.api.grpc/proto-google-common-protos -->
         <!-- https://mvnrepository.com/artifact/com.google.collections/google-collections -->

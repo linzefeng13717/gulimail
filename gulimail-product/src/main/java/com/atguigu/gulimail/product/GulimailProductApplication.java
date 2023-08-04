@@ -11,9 +11,11 @@ package com.atguigu.gulimail.product;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 @MapperScan("com.atguigu.gulimail.product.dao") //告诉mapper接口所在的位置
 @SpringBootApplication
+@EnableDiscoveryClient
 public class GulimailProductApplication{
 
     public static void main(String[] args){
