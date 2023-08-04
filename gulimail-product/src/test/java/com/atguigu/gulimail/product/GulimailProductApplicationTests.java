@@ -1,9 +1,6 @@
 package com.atguigu.gulimail.product;
 
-import com.aliyun.oss.ClientException;
-import com.aliyun.oss.OSS;
-import com.aliyun.oss.OSSClientBuilder;
-import com.aliyun.oss.OSSException;
+import com.aliyun.oss.*;
 import com.aliyun.oss.common.auth.CredentialsProviderFactory;
 import com.aliyun.oss.common.auth.EnvironmentVariableCredentialsProvider;
 import com.aliyun.oss.model.PutObjectRequest;
@@ -39,15 +36,18 @@ public class GulimailProductApplicationTests {
     @Autowired
     BrandService brandService;
 
+    @Autowired
+    OSSClient ossClient;
+
 
     public void testUpload() throws FileNotFoundException {
-        String endpoint = "oss-cn-beijing.aliyuncs.com";
-        String accessKeyId = "LTAI5t8WuNmMMwu82zNyfz8o";
-        String accessKeySecret = "KCrfTsuCtrmimImGZrAp5zhWjvQZdc";
-
-        OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret);
-
-        InputStream inputStream = new FileInputStream("C:\\Users\\86158\\Desktop\\Folder Root\\the weeknd.jpg");
+//        String endpoint = "oss-cn-beijing.aliyuncs.com";
+//        String accessKeyId = "LTAI5t8WuNmMMwu82zNyfz8o";
+//        String accessKeySecret = "KCrfTsuCtrmimImGZrAp5zhWjvQZdc";
+//
+//        OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret);
+//
+        InputStream inputStream = new FileInputStream("C:\\Users\\86158\\Pictures\\Saved Pictures\\批注 2021-07-19 214816.png");
 
         ossClient.putObject("gulimail-forlin", "bug.jpg", inputStream);
         ossClient.shutdown();
