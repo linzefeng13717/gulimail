@@ -41,12 +41,6 @@ public class GulimailProductApplicationTests {
 
 
     public void testUpload() throws FileNotFoundException {
-//        String endpoint = "oss-cn-beijing.aliyuncs.com";
-//        String accessKeyId = "LTAI5t8WuNmMMwu82zNyfz8o";
-//        String accessKeySecret = "KCrfTsuCtrmimImGZrAp5zhWjvQZdc";
-//
-//        OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret);
-//
         InputStream inputStream = new FileInputStream("C:\\Users\\86158\\Pictures\\Saved Pictures\\批注 2021-07-19 214816.png");
 
         ossClient.putObject("gulimail-forlin", "bug.jpg", inputStream);
