@@ -2,7 +2,7 @@ spring:
   datasource:
     username: root
     password: root
-    url: jdbc:mysql://192.168.15.129:3306/gulimail_pms?characterEncoding=UTF-8
+    url: jdbc:mysql://192.168.15.131:3306/gulimail_pms?characterEncoding=UTF-8
     driver-class-name: com.mysql.cj.jdbc.Driver
   cloud:
     nacos:

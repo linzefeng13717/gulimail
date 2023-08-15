@@ -21,6 +21,7 @@
         <module>renren-generator</module>
         <module>gulimail-gateway</module>
         <module>gulimail-common</module>
+        <module>gulimail-third-party</module>
     </modules>
 
 </project>

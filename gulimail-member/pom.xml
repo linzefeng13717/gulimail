@@ -73,8 +73,8 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
-            <!--            <scope>test</scope>-->
-            <!--            <version>5.2.10.RELEASE</version>-->
+<!--                        <scope>test</scope>-->
+<!--                        <version>5.2.10.RELEASE</version>-->
             <scope>compile</scope>
         </dependency>
         <dependency>
