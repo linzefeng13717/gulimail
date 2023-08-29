@@ -32,7 +32,9 @@ public class Query<T> {
         long limit = 10;
 
         if(params.get(Constant.PAGE) != null){
-            curPage = Long.parseLong((String)params.get(Constant.PAGE));
+            //TODO:预防事故：我加了一个toString()
+            System.out.println(params.get(Constant.PAGE));
+            curPage = Long.parseLong((String)params.get(Constant.PAGE).toString());
         }
         if(params.get(Constant.LIMIT) != null){
             limit = Long.parseLong((String)params.get(Constant.LIMIT));

@@ -6,8 +6,22 @@ spring:
   datasource:
     username: root
     password: root
-    url: jdbc:mysql://192.168.15.129:3306/gulimail_wms?characterEncoding=UTF-8
+    url: jdbc:mysql://192.168.15.134:3306/gulimail_wms?characterEncoding=UTF-8
     driver-class-name: com.mysql.cj.jdbc.Driver
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+      config:
+        server-addr: 127.0.0.1:8848
+        namespace: 98aa99a2-cfb3-4eb9-a4f4-3950c9c8cd67
+
+  application:
+    name: gulimail-ware
+
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+
 
 mybatis-plus:
   mapper-locations: classpath:/mapper/**/*.

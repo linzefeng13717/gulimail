@@ -1,8 +1,13 @@
 package com.atguigu.gulimail.product.service.impl;
 
+import com.atguigu.gulimail.product.entity.CategoryBrandRelationEntity;
+import com.atguigu.gulimail.product.service.CategoryBrandRelationService;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -20,7 +25,10 @@ import com.atguigu.gulimail.product.service.CategoryService;
 
 @Service("categoryService")
 public class CategoryServiceImpl extends ServiceImpl<CategoryDao, CategoryEntity> implements CategoryService {
-    
+
+    @Autowired
+    CategoryBrandRelationService categoryBrandRelationService;
+
     @Override
     public PageUtils queryPage(Map<String, Object> params) {
         IPage<CategoryEntity> page = this.page(
@@ -57,6 +65,36 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryDao, CategoryEntity
 
         //逻辑删除
         baseMapper.deleteBatchIds(list);
+    }
+
+    @Override
+    public Long[] findCategoryPath(Long catelogId) {
+        List<Long> paths = new ArrayList<>();
+
+        List<Long> parentPath = findParentPath(catelogId, paths);
+
+        Collections.reverse(parentPath);
+
+        return parentPath.toArray(new Long[parentPath.size()]);
+    }
+
+    /**
+     * 级联更新所有数据
+     * @param category
+     */
+    @Override
+    public void updateCascadeById(CategoryEntity category) {
+        this.updateById(category);
+        categoryBrandRelationService.updataCategory(category.getCatId(), category.getName());
+    }
+
+    private List<Long> findParentPath(Long catelogId, List<Long> paths){
+        paths.add(catelogId);
+        CategoryEntity byId = this.getById(catelogId);
+        if(byId.getParentCid()!=0){
+            findParentPath(byId.getParentCid(), paths);
+        }
+        return paths;
     }
 
     /**

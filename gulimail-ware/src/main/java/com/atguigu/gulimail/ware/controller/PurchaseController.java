@@ -1,14 +1,14 @@
 package com.atguigu.gulimail.ware.controller;
 
 import java.util.Arrays;
+import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
+import com.atguigu.gulimail.ware.vo.MergeVo;
+import com.atguigu.gulimail.ware.vo.PurchaseDoneVo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.atguigu.gulimail.ware.entity.PurchaseEntity;
 import com.atguigu.gulimail.ware.service.PurchaseService;
@@ -41,6 +41,33 @@ public class PurchaseController {
         return R.ok().put("page", page);
     }
 
+    @PostMapping("/merge")
+    public R merge(@RequestBody MergeVo mergeVo){
+        purchaseService.mergePurchase(mergeVo);
+        return R.ok();
+    }
+
+    @PostMapping("/done")
+    public R received(@RequestBody PurchaseDoneVo doneVo){
+        purchaseService.done(doneVo);
+        return R.ok();
+    }
+
+
+    @PostMapping("/finish")
+    public R finish(@RequestBody List<Long> ids){
+        purchaseService.received(ids);
+        return R.ok();
+    }
+
+    @RequestMapping("/unreceive/list")
+    //@RequiresPermissions("ware:purchase:list")
+    public R unreceivelist(@RequestParam Map<String, Object> params){
+        PageUtils page = purchaseService.queryPageUnreceivePurchase(params);
+
+        return R.ok().put("page", page);
+    }
+
 
     /**
      * 信息
@@ -59,7 +86,9 @@ public class PurchaseController {
     @RequestMapping("/save")
     //@RequiresPermissions("ware:purchase:save")
     public R save(@RequestBody PurchaseEntity purchase){
-		purchaseService.save(purchase);
+		purchase.setUpdateTime(new Date());
+        purchase.setCreateTime(new Date());
+        purchaseService.save(purchase);
 
         return R.ok();
     }
